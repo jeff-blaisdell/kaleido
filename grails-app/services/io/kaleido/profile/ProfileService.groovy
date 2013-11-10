@@ -42,7 +42,7 @@ class ProfileService {
         def role = Role.findByAuthority('ROLE_USER')
         UserRole.create(user as User, role as Role)
 
-        def url = grailsLinkGenerator.link(controller: 'account', action: 'verifyRegistration', absolute: true, params: [token: registerToken, email: user.getEmail()])
+        def url = grailsLinkGenerator.link(controller: 'account', action: 'verify', absolute: true, params: [token: registerToken, email: user.getEmail()])
         def conf = grailsApplication.config
         def body = conf.user.register.emailBody
         if (body.contains('$')) {

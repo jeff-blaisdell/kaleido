@@ -10,17 +10,21 @@
 <main>
 
 <g:if test="${emailSent}">
-    <br/>
-    <g:message code='profile.registration.email.sent'/>
+    <section class="l-globalwidth">
+        <br/>
+        <g:message code='profile.registration.email.sent'/>
+    </section>
 </g:if>
 <g:elseif test="${badRegistration}">
-    <br/>
-    <g:message code='profile.registration.bad'/>
+    <section class="l-globalwidth">
+        <br/>
+        <g:message code='profile.registration.bad'/>
+    </section>
 </g:elseif>
 <g:else>
     <section class="l-globalwidth">
         <div class="account-box">
-            <g:form id="account-form" name="account" action="register" method="post">
+            <g:form id="account-form" name="account" action="create" method="post">
                 <h3><g:message code="profile.registration.form.label" default="Create Account"/></h3>
                 <fieldset>
                     <div class="form-group">
