@@ -2,7 +2,8 @@
   "name": "kaleido",
   "version": "0.0.0",
   "authors": [
-    "jeff-blaisdell <jeff-blaisdell@github.com>"
+    "jeff-blaisdell <jeff-blaisdell@github.com>",
+    "jess-blaisdell <jess0423@github.com>"
   ],
   "description": "A web application to encourage creative discussion.",
   "keywords": [
