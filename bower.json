@@ -1,0 +1,35 @@
+{
+  "name": "kaleido",
+  "version": "0.0.0",
+  "authors": [
+    "jeff-blaisdell <jeff-blaisdell@github.com>"
+  ],
+  "description": "A web application to encourage creative discussion.",
+  "keywords": [
+    "Story",
+    "Create",
+    "Art",
+    "Beauty",
+    "Communication",
+    "Education",
+    "Learn"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "3.0.0",
+    "angular": "1.0.8",
+    "backbone": "1.0.0",
+    "handlebars": "1.0.0",
+    "modernizr": "2.6.2",
+    "require": "2.1.8",
+    "underscore": "1.5.2"
+  }
+}

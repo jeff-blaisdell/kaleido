@@ -89,3 +89,71 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+grails {
+    mail {
+        host = "smtp.gmail.com"
+        port = 465
+        username = "jeff.blaisdell@gmail.com"
+        password = "mavb55"
+        props = ["mail.smtp.auth":"true",
+                "mail.smtp.socketFactory.port":"465",
+                "mail.smtp.socketFactory.class":"javax.net.ssl.SSLSocketFactory",
+                "mail.smtp.socketFactory.fallback":"false"]
+    }
+}
+
+// Added by the Spring Security Core plugin:
+grails.plugins.springsecurity.userLookup.userDomainClassName = 'io.kaleido.profile.User'
+grails.plugins.springsecurity.userLookup.usernamePropertyName = 'email'
+grails.plugins.springsecurity.userLookup.authorityJoinClassName = 'io.kaleido.profile.UserRole'
+grails.plugins.springsecurity.authority.className = 'io.kaleido.profile.Role'
+grails.plugins.springsecurity.useSecurityEventListener = true
+grails.plugins.springsecurity.password.algorithm = 'bcrypt'
+grails.plugins.springsecurity.password.bcrypt.logrounds = 15
+grails.plugins.springsecurity.successHandler.defaultTargetUrl='/'
+grails.plugins.springsecurity.securityConfigType = "Annotation"
+grails.plugins.springsecurity.adh.errorPage='/error/forbidden'
+grails.plugins.springsecurity.auth.loginFormUrl='/account/signin'
+grails.plugins.springsecurity.failureHandler.defaultFailureUrl='/account/signin'
+grails.plugins.springsecurity.facebook.domain.classname='io.kaleido.profile.FacebookUser'
+grails.plugins.springsecurity.facebook.appId='514394148640546'
+grails.plugins.springsecurity.facebook.secret='e8f381273a740f99cde4509f38bc5a49'
+grails.plugins.springsecurity.facebook.permissions='email,user_birthday,user_location'
+grails.plugins.springsecurity.facebook.autoCreate.roles='ROLE_USER,ROLE_FACEBOOK'
+grails.plugins.springsecurity.facebook.filter.redirect.failureHandler='redirectFailureHandlerExample'
+grails.plugins.springsecurity.facebook.filter.redirect.successHandler='redirectSuccessHandlerExample'
+grails.plugins.springsocial.facebook.clientId='514394148640546'
+grails.plugins.springsocial.facebook.clientSecret='e8f381273a740f99cde4509f38bc5a49'
+grails.plugins.springsecurity.facebook.taglib.button.img='/images/facebook-connect.png'
+
+user {
+    register {
+        emailBody = '''\
+Hi $user.firstName,<br/>
+<br/>
+You (or someone pretending to be you) created an account with this email address.<br/>
+<br/>
+If you made the request, please click&nbsp;<a href="$url">here</a> to finish the registration.
+'''
+        emailFrom = 'do.not.reply@localhost'
+        emailSubject = 'New Account'
+        defaultRoleNames = ['ROLE_USER']
+        postRegisterUrl = null // use defaultTargetUrl if not set
+    }
+
+    passwordReset {
+        emailBody = '''\
+Hi $user.firstName,<br/>
+<br/>
+You (or someone pretending to be you) requested that your password be reset.<br/>
+<br/>
+If you didn't make this request then ignore the email; no changes have been made.<br/>
+<br/>
+If you did make the request, then click <a href="$url">here</a> to reset your password.
+'''
+        emailFrom = 'do.not.reply@localhost'
+        emailSubject = 'Password Reset'
+        postResetUrl = null // use defaultTargetUrl if not set
+    }
+}
