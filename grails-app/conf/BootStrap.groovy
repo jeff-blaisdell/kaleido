@@ -1,3 +1,4 @@
+import io.kaleido.browse.Post
 import io.kaleido.profile.Address
 import io.kaleido.profile.Role
 import io.kaleido.profile.User
@@ -36,6 +37,42 @@ class BootStrap {
 
         if (!adminUser.authorities.contains(userRole)) {
             UserRole.create(adminUser, userRole)
+        }
+
+        def imageSizes = ["350", "450", "550", "650"]
+
+        def lookupBackgroundColor = { size ->
+            if ("350".equals(size) ) {
+                return "F2505D"
+            } else if ("450".equals(size) ) {
+                return "416EF2"
+            } else if ("550".equals(size) ) {
+                return "F2E85C"
+            } else if ("650".equals(size) ) {
+                return "F28749"
+            }
+            return "73323E"
+        }
+
+        def publishedDate = new Date()
+        def post = Post.first()
+        if (!post) {
+
+            for (int i = 0; i < 100; i++) {
+
+                def imageSize = imageSizes[i%imageSizes.size()]
+                def color = lookupBackgroundColor(imageSize)
+
+                new Post(
+                    title: 'My Post #' + i,
+                    description: 'An example post.',
+                    keywords: 'Example Demo',
+                    imageFileName: '350x' + imageSize  + '/' + color + '/ffffff/&text=Image',
+                    content: 'A really interesting post about really cool stuff.',
+                    publishedDate: publishedDate,
+                    user: adminUser
+                ).save(failOnError: true)
+            }
         }
 
     }

@@ -40,6 +40,9 @@
             <span class="nav-welcome">Welcome <sec:loggedInUserInfo field="firstName" /></span>
         </sec:ifLoggedIn>
     </nav>
+    <header class="header">
+        <img class="img-responsive" alt="banner" src="http://placehold.it/1000x250/ffffff/00000/&text=banner">
+    </header>
 </section>
 <g:layoutBody/>
 <r:layoutResources />

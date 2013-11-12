@@ -10,6 +10,8 @@ requirejs.config({
         },
         'modernizr': {
             exports: 'Modernizr'
-        }
+        },
+        'underscore': '_',
+        'jquery-masonry': ['jquery']
     }
 });
