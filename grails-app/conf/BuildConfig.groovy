@@ -48,6 +48,7 @@ grails.project.dependency.resolution = {
         compile("org.springframework.social:spring-social-facebook:${springSocialVersion}")
         compile("org.springframework.social:spring-social-web:${springSocialVersion}")
         compile("org.springframework.security:spring-security-crypto:3.1.0.RELEASE")
+        compile("commons-lang:commons-lang:2.6")
         compile("javax.inject:javax.inject:1")
     }
 

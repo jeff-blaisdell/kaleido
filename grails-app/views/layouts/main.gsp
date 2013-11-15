@@ -9,6 +9,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title><g:layoutTitle default="Kaleido"/></title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap.css')}" type="text/css">
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'bootstrap-theme.css')}" type="text/css">
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'base.css')}" type="text/css">
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'layout.css')}" type="text/css">
+    <link rel="stylesheet" href="${resource(dir: 'css', file: 'nav.css')}" type="text/css">
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'main.css')}" type="text/css">
 
     <script type="text/javascript">

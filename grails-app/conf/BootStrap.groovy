@@ -3,6 +3,7 @@ import io.kaleido.profile.Address
 import io.kaleido.profile.Role
 import io.kaleido.profile.User
 import io.kaleido.profile.UserRole
+import org.apache.commons.lang.math.RandomUtils
 
 class BootStrap {
 
@@ -54,14 +55,15 @@ class BootStrap {
             return "73323E"
         }
 
-        def publishedDate = new Date()
         def post = Post.first()
+        def currentTime = new Date(System.currentTimeMillis())
         if (!post) {
 
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 1000; i++) {
 
                 def imageSize = imageSizes[i%imageSizes.size()]
                 def color = lookupBackgroundColor(imageSize)
+                def publishedDate = currentTime.plus(i)
 
                 new Post(
                     title: 'My Post #' + i,

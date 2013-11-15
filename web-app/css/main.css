@@ -1,8 +1,10 @@
+/*
 @import url("./bootstrap.css");
 @import url("./bootstrap-theme.css");
 @import url("./base.css");
 @import url("./layout.css");
 @import url("./nav.css");
+*/
 
 .header {
     margin: 10px 0px;
@@ -12,33 +14,28 @@
     margin: 10px 10px 10px 0px;
 }
 
+/* Also, don't forget to add this: */
+[data-columns]::before { display: none; }
+
+
 .posts[data-columns]::before {
     content: '1 .column.size-1of1';
 }
-
-/* These are the classes that are going to be applied: */
-.size-1of1 { width: 100%; }
-.column { float: none; }
-
-/* Also, don't forget to add this: */
-[data-columns]::before { display: none; }
 
 @media screen and (min-width: 40em) {
     .posts[data-columns]::before {
         content: '2 .column.size-1of2';
     }
-
-    .size-1of2 { width: 48%; }
-    .column { float: left; }
-
 }
 
 @media screen and (min-width: 60em) {
     .posts[data-columns]::before {
         content: '3 .column.size-1of3';
     }
-
-    /* These are the classes that are going to be applied: */
-    .size-1of3 { width: 32.33333%; }
-    .column { float: left; }
 }
+
+/* These are the classes that are going to be applied: */
+.size-1of1 { width: 100%; }
+.size-1of2 { width: 48%; }
+.size-1of3 { width: 32.33333%; }
+.column { float: left; }

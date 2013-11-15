@@ -16,6 +16,10 @@ class Post {
 
     static hasMany = [posts:Post]
 
+    static mapping = {
+        publishedDate index:true
+    }
+
     static constraints = {
         title blank:true, maxSize:25
         description blank:true, maxSize:200

@@ -8,7 +8,6 @@ modules = {
         resource url:'/js/handlebars.js'
         resource url:'/js/modernizr.js'
         resource url:'/js/underscore.js'
-        resource url:'/js/jquery-masonry.js'
         resource url:'/js/salvattore.js'
     }
 
