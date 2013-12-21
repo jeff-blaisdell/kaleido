@@ -7,7 +7,7 @@ class UrlMappings {
             }
         }
 
-        "/"(controller: "browse", action:"index")
+        "/"(controller: "browse", action:"browse")
         "500"(controller: 'error', action: 'internalServerError')
         "403"(controller: 'error', action: 'forbidden')
         "404"(controller: 'error', action: 'notFound')

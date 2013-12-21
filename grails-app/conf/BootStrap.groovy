@@ -58,12 +58,12 @@ class BootStrap {
         def post = Post.first()
         def currentTime = new Date(System.currentTimeMillis())
         if (!post) {
-
-            for (int i = 0; i < 1000; i++) {
+            int day = 0;
+            for (int i = 1000; i > 0; i--) {
 
                 def imageSize = imageSizes[i%imageSizes.size()]
                 def color = lookupBackgroundColor(imageSize)
-                def publishedDate = currentTime.plus(i)
+                def publishedDate = currentTime.minus(day++)
 
                 new Post(
                     title: 'My Post #' + i,
