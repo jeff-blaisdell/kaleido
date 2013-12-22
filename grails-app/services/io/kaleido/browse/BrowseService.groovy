@@ -2,50 +2,63 @@ package io.kaleido.browse
 
 
 class BrowseService {
+
     private static final int MAX_POSTS_PER_PAGE = 25
     private static final String DATE_FORMAT = "yyyyMMddkkmmssSS"
-    private Object[] postPages;
-    private int totalPosts;
-    private int totalPages;
+    private static Object[] POST_PAGES = null;
+    private static int TOTAL_POSTS = 0;
+    private static int TOTAL_PAGES = 0;
 
+    /**
+     * The following method is executed from Bootstrap.groovy on initialization.
+     * On startup pre-compute all the pages of posts to show on home page.  This
+     * will be then used by the infinite scrolling functionality.
+     */
     def initialize() {
 
+        // Gather all the posts we will show.
         def posts = selectPosts();
-        totalPosts = (posts == null ? 0 : posts.size());
+
+        TOTAL_POSTS = (posts == null ? 0 : posts.size());
 
         if (!posts) {
-            totalPages = 0;
+            TOTAL_PAGES = 0;
             return;
         }
 
-        totalPages = Math.ceil((double) posts.size() / MAX_POSTS_PER_PAGE);
-        postPages = new Object[totalPages];
+        // Break the posts up into a set amount of pages.
+        TOTAL_PAGES = Math.ceil((double) posts.size() / MAX_POSTS_PER_PAGE);
+        POST_PAGES = new Object[TOTAL_PAGES];
 
-
-        for (int p = 0; p < totalPages; p++) {
+        // Build the page models and store in an array of the pages.
+        for (int p = 0; p < TOTAL_PAGES; p++) {
             int start = p * MAX_POSTS_PER_PAGE;
             int end = start + MAX_POSTS_PER_PAGE;
-            end = (end  > totalPosts ? totalPosts : end);
+            end = (end  > TOTAL_POSTS ? TOTAL_POSTS : end);
             List<Post> items = posts.subList(start, end);
-            Map page = this.buildPage(items, p + 2, p);
-            postPages[p] = page;
+            Map page = buildPage(items, p + 2, p);
+            POST_PAGES[p] = page;
         }
 
     }
 
-
+    /**
+     * Lookup the appropriate page of posts.
+     * @param pageNumber
+     * @return A page map [posts {List<Post>}, nextPage {Integer}, prevPage {Integer}].
+     */
     def selectPage(Integer pageNumber) {
 
-        if (!postPages)
+        if (!POST_PAGES)
             return null;
 
         if (!pageNumber || pageNumber == 0)
-            return postPages[0];
+            return POST_PAGES[0];
 
-        if (pageNumber > totalPages)
+        if (pageNumber > TOTAL_PAGES)
             return null;
 
-        return postPages[pageNumber -1];
+        return POST_PAGES[pageNumber -1];
     }
 
     /**
@@ -55,10 +68,10 @@ class BrowseService {
      * @param prevPost The post to trigger the previous page.
      * @return
      */
-    def Map buildPage(posts, nextPage, prevPage) {
+    private static Map buildPage(posts, nextPage, prevPage) {
         def dateFormat = DATE_FORMAT
         def items = []
-        nextPage = (nextPage > totalPages ? null : nextPage);
+        nextPage = (nextPage > TOTAL_PAGES ? null : nextPage);
         prevPage = (prevPage < 0 ? null : prevPage);
 
         if (posts) {
@@ -83,7 +96,7 @@ class BrowseService {
     private static List<Post> selectPosts() {
         Date startDate = getStartDate();
         Date endDate = getEndDate();
-        def posts = Post.findAll(sort: 'publishedDate', order: 'desc', cache: false) {
+        def posts = Post.findAll(sort: 'publishedDate', order: 'desc', max: 1000, cache: false) {
             publishedDate < startDate && publishedDate > endDate
         }
         return posts
