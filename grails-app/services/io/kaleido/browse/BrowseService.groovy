@@ -96,7 +96,7 @@ class BrowseService {
     private static List<Post> selectPosts() {
         Date startDate = getStartDate();
         Date endDate = getEndDate();
-        def posts = Post.findAll(sort: 'publishedDate', order: 'desc', max: 50, cache: false) {
+        def posts = Post.findAll(sort: 'publishedDate', order: 'desc', max: 1000, cache: false) {
             publishedDate < startDate && publishedDate > endDate
         }
         return posts
