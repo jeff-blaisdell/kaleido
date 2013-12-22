@@ -3,9 +3,10 @@ import io.kaleido.profile.Address
 import io.kaleido.profile.Role
 import io.kaleido.profile.User
 import io.kaleido.profile.UserRole
-import org.apache.commons.lang.math.RandomUtils
 
 class BootStrap {
+
+    def browseService;
 
     def init = { servletContext ->
 
@@ -76,6 +77,8 @@ class BootStrap {
                 ).save(failOnError: true)
             }
         }
+
+        browseService.initialize();
 
     }
 
