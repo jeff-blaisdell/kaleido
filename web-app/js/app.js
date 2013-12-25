@@ -1,5 +1,5 @@
 requirejs.config({
-    baseUrl: '/kaleido/static/js',
+    baseUrl: '/k/static/js',
     paths: {
         'jquery': 'jquery/jquery-1.10.2.min',
         'classie': 'packery/classie',
