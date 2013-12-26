@@ -33,7 +33,7 @@
 <section class="nav-section l-globalwidth clearfix">
     <nav class="pull-right">
         <ul class="nav nav-pills">
-            <li><g:link controller="browse" action="index">Home</g:link></li>
+            <li><g:link controller="browse" action="browse">Home</g:link></li>
             <sec:ifNotLoggedIn>
                 <li><g:link controller="signIn" action="signin">Sign In</g:link></li>
             </sec:ifNotLoggedIn>
