@@ -33,7 +33,7 @@
     <div class="main">
         <div class="container">
             <h1>Kaleido.io</h1>
-            <h2><small>Community | Art | Expression | Share</small></h2>
+            <h2><small>Community | Art | Expression</small></h2>
             <h3>Coming Soon.</h3>
         </div>
     </div>
