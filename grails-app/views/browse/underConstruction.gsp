@@ -36,16 +36,16 @@
             body { background: url('/k/static/images/paper.jpg') repeat-x; background-size: 90px auto; }
 
             .banner-bg {
-                background: url('/k/static/images/brush-lines.jpg') no-repeat;
-                background-size: 100% 100%;
-                width: 100%;
-                height: 100%;
-                max-width: 1200px;
-                position: absolute;
-                top: 0;
-                left: 0;
+                background: url('/k/static/images/brush-lines-md.jpg') no-repeat;
             }
+        }
 
+        @media (min-width: 800px) {
+            body { background: url('/k/static/images/paper.jpg') repeat-x; background-size: 90px auto; }
+
+            .banner-bg {
+                background: url('/k/static/images/brush-lines.jpg') no-repeat;
+            }
         }
 
 
