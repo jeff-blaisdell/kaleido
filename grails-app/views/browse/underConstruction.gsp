@@ -32,10 +32,6 @@
         .overlay blockquote { color: #FFFFFF; padding: 5px 5px; border-left: none; }
         .input-group { max-width: 400px; }
 
-        @media (min-width: 550px) {
-            .banner-bg { background: url('/k/static/images/brush-lines-md.jpg') no-repeat; }
-        }
-
         @media (min-width: 800px) {
             body { background: url('/k/static/images/paper.jpg') repeat-x; background-size: 90px auto; }
             .banner-bg { background: url('/k/static/images/brush-lines.jpg') no-repeat; }
