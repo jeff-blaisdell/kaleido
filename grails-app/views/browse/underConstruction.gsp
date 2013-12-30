@@ -11,7 +11,18 @@
 
     <style>
 
-        .banner .name { font-family: 'The Girl Next Door', cursive; font-size: 4em; color: #FF8C06; }
+        .banner-bg {
+            background: url('/k/static/images/brush-lines-sm.jpg') no-repeat;
+            background-size: 100% 100%;
+            width: 100%;
+            height: 100%;
+            max-width: 1200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .banner .name { font-family: 'The Girl Next Door', cursive; font-size: 4em; color: #FFFFFF; }
         .banner .call-out { margin-top: -18px; margin-bottom: 15px; }
         .call-out { color: #FFFFFF; }
         .call-out .color1 { color: #135573; }
@@ -33,10 +44,7 @@
                 position: absolute;
                 top: 0;
                 left: 0;
-                z-index: -1;
             }
-
-            .banner .name { color: #FFFFFF; }
 
         }
 
