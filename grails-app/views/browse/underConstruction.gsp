@@ -11,6 +11,8 @@
 
     <style>
 
+        .uc-main .glyphicon-ok { color: #FFFFFF; }
+
         .banner-bg {
             background: url('/k/static/images/brush-lines-sm.jpg') no-repeat;
             background-size: 100% 100%;
@@ -30,7 +32,8 @@
         .call-out .color3 { color: #3BD3FF; }
         .call-out .color4 { color: #67F611; }
         .overlay blockquote { color: #FFFFFF; padding: 5px 5px; border-left: none; }
-        .input-group { max-width: 400px; }
+        .input-group, .alert { max-width: 400px; }
+        .alert { margin-top: 10px; }
 
         @media (min-width: 800px) {
             body { background: url('/k/static/images/paper.jpg') repeat-x; background-size: 90px auto; }
@@ -61,14 +64,26 @@
                     </div>
 
                     <div class="content">
-                        <form>
-                            <div class="input-group">
-                                <input type="email" class="form-control" placeholder="Here's my e-mail address.">
-                                <span class="input-group-btn">
-                                    <button class="btn btn-info" type="button">Notify Me</button>
-                                </span>
-                            </div>
-                        </form>
+                        <g:form name="notify-me-form" url="[action:'underConstruction', controller:'browse']">
+
+                            <g:if test="${notified == true}">
+                                <div class="input-group">
+                                    <input type="email" name="email" class="form-control" placeholder="${email}" disabled="disabled">
+                                    <span class="input-group-addon label-success">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </span>
+                                </div>
+                                <div class="alert alert-success">Thank you!  We'll keep you updated with the latest info.</div>
+                            </g:if>
+                            <g:else>
+                                <div class="input-group">
+                                    <input type="email" name="email" class="form-control" placeholder="Here's my e-mail address.">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-info" type="submit">Notify Me</button>
+                                    </span>
+                                </div>
+                            </g:else>
+                        </g:form>
                     </div>
 
                     <div class="footer">
