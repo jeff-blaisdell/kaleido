@@ -60,6 +60,7 @@ grails.project.dependency.resolution = {
         compile ":mail:1.0.1"
         compile ":cache:1.0.1"
         compile ":mongodb:1.3.0"
+        compile ":mongodb-compound-index-attributes:1.1"
         runtime ":jquery:1.10.2"
         runtime ":resources:1.2.1"
         build ":tomcat:$grailsVersion"

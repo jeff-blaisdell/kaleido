@@ -14,4 +14,8 @@ class Preference {
         type nullable:false, blank:false
         active nullable:false, blank:false
     }
+
+    static mapping = {
+        compoundIndex email:1, type:1, indexAttributes: [unique:true]
+    }
 }
