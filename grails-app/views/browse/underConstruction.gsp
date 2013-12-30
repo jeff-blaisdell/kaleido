@@ -33,8 +33,6 @@
         .input-group { max-width: 400px; }
 
         @media (min-width: 550px) {
-            body { background: url('/k/static/images/paper.jpg') repeat-x; background-size: 90px auto; }
-
             .banner-bg {
                 background: url('/k/static/images/brush-lines-md.jpg') no-repeat;
             }
