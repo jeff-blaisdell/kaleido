@@ -8,7 +8,6 @@ modules = {
         resource url:'/js/handlebars.js'
         resource url:'/js/modernizr.js'
         resource url:'/js/underscore.js'
-        resource url:'/js/salvattore.js'
         resource url:'/js/packery/classie/classie.js'
         resource url:'/js/packery/doc-ready/doc-ready.js'
         resource url:'/js/packery/eventEmitter/EventEmitter.js'
@@ -33,6 +32,10 @@ modules = {
 
     browse {
         resource url: '/js/browse.js'
+    }
+
+    detail {
+        resource url: '/js/detail.js'
     }
 
     registration {

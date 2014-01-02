@@ -13,8 +13,9 @@ class Post {
     String content
     Date publishedDate
     User user
+    ArrayList<Post> posts
 
-    static hasMany = [posts:Post]
+    static embedded = ['posts']
 
     static mapping = {
         publishedDate index:true

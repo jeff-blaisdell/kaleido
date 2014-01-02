@@ -4,10 +4,11 @@ package io.kaleido.browse
 class BrowseService {
 
     private static final int MAX_POSTS_PER_PAGE = 25
-    private static final String DATE_FORMAT = "yyyyMMddkkmmssSS"
     private static Object[] POST_PAGES = null;
     private static int TOTAL_POSTS = 0;
     private static int TOTAL_PAGES = 0;
+
+    def customConversionService
 
     /**
      * The following method is executed from Bootstrap.groovy on initialization.
@@ -68,22 +69,14 @@ class BrowseService {
      * @param prevPost The post to trigger the previous page.
      * @return
      */
-    private static Map buildPage(posts, nextPage, prevPage) {
-        def dateFormat = DATE_FORMAT
+    private Map buildPage(posts, nextPage, prevPage) {
+
         def items = []
         nextPage = (nextPage > TOTAL_PAGES ? null : nextPage);
         prevPage = (prevPage < 0 ? null : prevPage);
 
         if (posts) {
-            for (post in posts) {
-                items.add([
-                        id: post.id.toString(),
-                        title: post.title,
-                        email: post.user?.email,
-                        publishedDate: post.publishedDate.format(dateFormat),
-                        imageUrl: "http://placehold.it/" + post.imageFileName
-                ])
-            }
+            items = customConversionService.convert(posts)
         }
 
         return ['posts': items, 'nextPage': nextPage, 'prevPage': prevPage]

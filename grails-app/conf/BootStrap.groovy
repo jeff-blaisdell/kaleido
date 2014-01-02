@@ -3,12 +3,21 @@ import io.kaleido.profile.Address
 import io.kaleido.profile.Role
 import io.kaleido.profile.User
 import io.kaleido.profile.UserRole
+import org.springframework.web.context.support.WebApplicationContextUtils
+
+import javax.servlet.ServletConfig
 
 class BootStrap {
 
     def browseService;
 
     def init = { servletContext ->
+
+        // Get spring
+        def springContext = WebApplicationContextUtils.getWebApplicationContext( servletContext )
+
+        // Configure Custom JSON Serialization.
+        springContext.getBean( "customMarshallerService" ).register()
 
         //Configure Security Roles
         def userRole = Role.findByAuthority('ROLE_USER') ?: new Role(authority: 'ROLE_USER').save(failOnError: true)
@@ -66,20 +75,63 @@ class BootStrap {
                 def color = lookupBackgroundColor(imageSize)
                 def publishedDate = currentTime.minus(day++)
 
-                new Post(
+                def p = new Post(
                     title: 'My Post #' + i,
                     description: 'An example post.',
                     keywords: 'Example Demo',
                     imageFileName: '350x' + imageSize  + '/' + color + '/ffffff/&text=Image',
                     content: 'A really interesting post about really cool stuff.',
                     publishedDate: publishedDate,
-                    user: adminUser
-                ).save(failOnError: true)
+                    user: adminUser,
+                    posts: new ArrayList<Post>()
+                )
+
+                for (int x = 0; x < 5; x++) {
+                    def s = imageSizes[x%imageSizes.size()]
+                    def c = lookupBackgroundColor(s)
+                    def r = new Post(
+                            title: 'My Post ' + getLetter(x),
+                            description: 'An example post.',
+                            keywords: 'Example Demo',
+                            imageFileName: '350x' + s  + '/' + c + '/ffffff/&text=Image',
+                            content: 'A really interesting post about really cool stuff.',
+                            publishedDate: publishedDate,
+                            user: adminUser
+                    )
+                    p.posts.add(r)
+                }
+
+                p.save(failOnError: true, flush: true)
             }
         }
 
         browseService.initialize();
 
+    }
+
+    def getLetter(int i) {
+        String letter;
+        switch (i) {
+            case 0:
+                letter = "A"
+                break;
+            case 1:
+                letter = "B"
+                break;
+            case 2:
+                letter = "C"
+                break;
+            case 3:
+                letter = "D"
+                break;
+            case 4:
+                letter = "E"
+                break;
+            default:
+                letter =  "E"
+                break;
+        }
+        return letter
     }
 
     def destroy = {

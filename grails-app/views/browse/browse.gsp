@@ -10,8 +10,10 @@
     <section class="browse-posts clearfix" data-columns>
         <g:each var="post" in="${posts}">
             <div class="browse-post">
-                <img src="${post.imageUrl}" alt="${post.title}">
-                <h5>${post.title}</h5>
+                <a href="${createLink(controller: 'browseDetail', action: 'detail', params: [id: post.id])}">
+                    <img src="${post.imageUrl}" alt="${post.title}">
+                    <h5>${post.title}</h5>
+                </a>
             </div>
         </g:each>
     </section>
