@@ -93,7 +93,7 @@ class BootStrap {
                             title: 'My Post ' + getLetter(x),
                             description: 'An example post.',
                             keywords: 'Example Demo',
-                            imageFileName: '350x' + s  + '/' + c + '/ffffff/&text=Image',
+                            imageFileName: '650x' + (2 * Integer.parseInt(s))  + '/' + c + '/ffffff/&text=Image',
                             content: 'A really interesting post about really cool stuff.',
                             publishedDate: publishedDate,
                             user: adminUser
