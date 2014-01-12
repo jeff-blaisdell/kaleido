@@ -48,6 +48,7 @@ grails.project.dependency.resolution = {
         compile("org.springframework.social:spring-social-facebook:${springSocialVersion}")
         compile("org.springframework.social:spring-social-web:${springSocialVersion}")
         compile("org.springframework.security:spring-security-crypto:3.1.0.RELEASE")
+        compile "net.sf.ehcache:ehcache-core:2.4.6"
         compile("commons-lang:commons-lang:2.6")
         compile("javax.inject:javax.inject:1")
     }
@@ -57,13 +58,15 @@ grails.project.dependency.resolution = {
         compile ":spring-security-facebook:0.14.5"
         compile ":spring-social-core:0.1.31"
         compile ":spring-social-facebook:0.1.32"
-        compile ":mail:1.0.1"
+        compile ":mail:1.0.1" {
+            excludes 'spring-test'
+        }
         compile ":cache:1.0.1"
         compile ":mongodb:1.3.0"
         compile ":mongodb-compound-index-attributes:1.1"
         runtime ":jquery:1.10.2"
         runtime ":resources:1.2.1"
-        build ":tomcat:$grailsVersion"
+        build ":tomcat:7.0.42"
 
     }
 }

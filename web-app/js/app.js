@@ -1,29 +1,33 @@
-requirejs.config({
-    baseUrl: '/k/static/js',
-    paths: {
-        'jquery': 'jquery/jquery-1.10.2.min',
-        'classie': 'packery/classie',
-        'eventie': 'packery/eventie',
-        'doc-ready': 'packery/doc-ready',
-        'eventEmitter': 'packery/eventEmitter',
-        'get-style-property': 'packery/get-style-property',
-        'get-size': 'packery/get-size',
-        'matches-selector': 'packery/matches-selector',
-        'outlayer': 'packery/outlayer',
-        'packery': 'packery',
-        'jquery-bridget': 'packery/jquery-bridget/jquery.bridget'
-    },
-    shim: {
-        'bootstrap': ['jquery'],
-        'handlebars': {
-            exports: 'Handlebars'
-        },
-        'modernizr': {
-            exports: 'Modernizr'
-        },
-        'underscore': '_',
-        'jquery-infinitescroll': ['jquery'],
-        'jquery-bridget': ['jquery'],
-        'packery': ['jquery-bridget']
-    }
+define(['angular',
+    'angular-cookies',
+    'angular-resource',
+    'angular-sanitize',
+    'angular-route',
+    'ng-infinite-scroll'
+], function( angular ) {
+
+    'use strict';
+
+    var app = angular.module('kaleido', [
+        'ngCookies',
+        'ngResource',
+        'ngSanitize',
+        'ngRoute',
+        'infinite-scroll'
+    ]);
+
+    app.config(function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'views/main.html',
+                controller: 'MainCtrl'
+            })
+            .otherwise({
+                redirectTo: '/'
+            });
+    });
+
+    return app;
+
+
 });

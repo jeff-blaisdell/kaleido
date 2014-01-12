@@ -27,5 +27,4 @@
     </section>
 </main>
 </body>
-<r:require modules="browse"/>
 </html>
