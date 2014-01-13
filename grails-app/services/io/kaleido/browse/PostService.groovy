@@ -2,7 +2,7 @@ package io.kaleido.browse
 
 import org.bson.types.ObjectId
 
-class BrowseDetailService {
+class PostService {
 
     def customConversionService
 

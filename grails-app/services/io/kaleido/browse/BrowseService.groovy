@@ -18,7 +18,7 @@ class BrowseService {
     def initialize() {
 
         // Gather all the posts we will show.
-        def posts = selectPosts();
+        def posts = posts();
 
         TOTAL_POSTS = (posts == null ? 0 : posts.size());
 
@@ -36,9 +36,8 @@ class BrowseService {
             int start = p * MAX_POSTS_PER_PAGE;
             int end = start + MAX_POSTS_PER_PAGE;
             end = (end  > TOTAL_POSTS ? TOTAL_POSTS : end);
-            List<Post> items = posts.subList(start, end);
-            Map page = buildPage(items, p + 2, p);
-            POST_PAGES[p] = page;
+            List<Post> items = customConversionService.convert(posts.subList(start, end));
+            POST_PAGES[p] = items;
         }
 
     }
@@ -48,7 +47,7 @@ class BrowseService {
      * @param pageNumber
      * @return A page map [posts {List<Post>}, nextPage {Integer}, prevPage {Integer}].
      */
-    def selectPage(Integer pageNumber) {
+    def selectPosts(Integer pageNumber) {
 
         if (!POST_PAGES)
             return null;
@@ -63,30 +62,18 @@ class BrowseService {
     }
 
     /**
-     * Build map representing page model.
-     * @param posts A list of posts for a page.
-     * @param nextPost The post to trigger the next page.
-     * @param prevPost The post to trigger the previous page.
+     * Get the total number of pages contained on browse page.
      * @return
      */
-    private Map buildPage(posts, nextPage, prevPage) {
-
-        def items = []
-        nextPage = (nextPage > TOTAL_PAGES ? null : nextPage);
-        prevPage = (prevPage < 0 ? null : prevPage);
-
-        if (posts) {
-            items = customConversionService.convert(posts)
-        }
-
-        return ['posts': items, 'nextPage': nextPage, 'prevPage': prevPage]
+    def getTotalPages() {
+        return TOTAL_PAGES;
     }
 
     /**
-     * Select the posts.
+     * Select all posts which will be seen on home page.
      * @return A list of posts
      */
-    private static List<Post> selectPosts() {
+    private static List<Post> posts() {
         Date startDate = getStartDate();
         Date endDate = getEndDate();
         def posts = Post.findAll(sort: 'publishedDate', order: 'desc', max: 1000, cache: false) {

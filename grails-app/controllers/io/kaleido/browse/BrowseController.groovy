@@ -1,31 +1,25 @@
 package io.kaleido.browse
 
-import io.kaleido.profile.PreferenceType
+import grails.rest.RestfulController
 
-class BrowseController {
+class BrowseController extends RestfulController {
+
+    static responseFormats = ['json', 'xml']
 
     def browseService
-    def preferenceService
 
-    def browse() {
-        def page = browseService.selectPage(params.page ? Integer.parseInt(params.page as String) : null)
+    def index() {
+        def posts = browseService.selectPosts()
+        def totalPages = browseService.getTotalPages();
 
-        render(view: 'browse', model: page)
+        respond posts, model: [totalPages: totalPages]
     }
 
-    /**
-     * Under Construction / Coming Soon page used while site is being built.
-     */
-    def underConstruction() {
+    def show() {
+        def posts = browseService.selectPosts(params.page ? Integer.parseInt(params.page as String) : null)
+        def totalPages = browseService.getTotalPages();
 
-        boolean notified = false
-
-        if (params.email) {
-            preferenceService.save(params.email as String, PreferenceType.UNDER_CONSTRUCTION_NOTIFICATION, true)
-            notified = true
-        }
-
-        render(view: 'underConstruction', model: [notified: notified, email: params.email])
+        respond posts, model: [totalPages: totalPages]
     }
 
 }
