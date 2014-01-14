@@ -15,7 +15,7 @@
     "Education",
     "Learn"
   ],
-  "license": "MIT",
+  "appPath": "./web-app",
   "private": true,
   "ignore": [
     "**/.*",

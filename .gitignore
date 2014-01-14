@@ -34,6 +34,7 @@
 /web-app/plugins
 /web-app/WEB-INF/classes
 /web-app/bower_components
+/node_modules
 
 # "temporary" build files
 /target

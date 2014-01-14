@@ -10,7 +10,7 @@ class PostController extends RestfulController {
 
     def show() {
         def post = postService.findPost(params.id)
-        render post
+        respond post
     }
 
     def save() {}

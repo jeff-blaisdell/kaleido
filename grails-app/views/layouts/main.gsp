@@ -25,32 +25,34 @@
             e.preventDefault(); // no page reload
         }
     </script>
-    <r:require modules="app"/>
     <g:layoutHead/>
     <r:layoutResources />
 </head>
-<body>
-<section class="nav-section l-globalwidth clearfix">
-    <nav class="pull-right">
-        <ul class="nav nav-pills">
-            <li><g:link controller="browse" action="browse">Home</g:link></li>
-            <sec:ifNotLoggedIn>
-                <li><g:link controller="signIn" action="signin">Sign In</g:link></li>
-            </sec:ifNotLoggedIn>
-            <sec:ifLoggedIn>
-                <li><g:link controller="signOut" action="signout">Sign Out</g:link></li>
-                <li><g:link controller="account" action="account">My Account</g:link></li>
-            </sec:ifLoggedIn>
-        </ul>
-        <sec:ifLoggedIn>
-            <span class="nav-welcome">Welcome <sec:loggedInUserInfo field="firstName" /></span>
-        </sec:ifLoggedIn>
-    </nav>
-    <header class="header">
-        <img class="img-responsive" alt="Kaleido" src="http://placehold.it/1000x250/ffffff/00000/&text=Banner">
-    </header>
-</section>
-<g:layoutBody/>
-<r:layoutResources />
+<body class="ng-view">
+    <div ng-controller="MainController">
+        <section class="nav-section l-globalwidth clearfix">
+            <nav class="pull-right">
+                <ul class="nav nav-pills">
+                    <li><g:link controller="browse" action="browse">Home</g:link></li>
+                    <sec:ifNotLoggedIn>
+                        <li><g:link controller="signIn" action="signin">Sign In</g:link></li>
+                    </sec:ifNotLoggedIn>
+                    <sec:ifLoggedIn>
+                        <li><g:link controller="signOut" action="signout">Sign Out</g:link></li>
+                        <li><g:link controller="account" action="account">My Account</g:link></li>
+                    </sec:ifLoggedIn>
+                </ul>
+                <sec:ifLoggedIn>
+                    <span class="nav-welcome">Welcome <sec:loggedInUserInfo field="firstName" /></span>
+                </sec:ifLoggedIn>
+            </nav>
+            <header class="header">
+                <img class="img-responsive" alt="Kaleido" src="http://placehold.it/1000x250/ffffff/00000/&text=Banner">
+            </header>
+        </section>
+        <g:layoutBody/>
+    </div>
+    <r:require modules="app"/>
+    <r:layoutResources />
 </body>
 </html>

@@ -1,0 +1,22 @@
+<div class="browse l-globalwidth" ng-controller="MainController">
+    <section class="nav-section l-globalwidth clearfix">
+        <nav class="pull-right">
+            <ul class="nav nav-pills">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Sign In</a></li>
+            </ul>
+        </nav>
+        <header class="header">
+            <img class="img-responsive" alt="Kaleido" src="http://placehold.it/1000x250/ffffff/00000/&text=Banner">
+        </header>
+    </section>
+
+    <section class="browse-posts clearfix" ng-controller="BrowseController" ng-show="posts">
+        <div class="browse-post" ng-repeat="post in posts">
+            <a href="#">
+                <img ng-src="{{ post.imageUrl }}" alt="{{ post.title }}">
+                <h5>{{ post.title }}</h5>
+            </a>
+        </div>
+    </section>
+</div>
