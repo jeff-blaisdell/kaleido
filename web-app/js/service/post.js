@@ -14,7 +14,6 @@ define(['app'], function( app ) {
 					return $http.get('/k/browse');
 				}
 			}
-
 		};
 
 	}]);

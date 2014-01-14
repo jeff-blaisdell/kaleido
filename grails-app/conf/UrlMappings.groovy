@@ -8,5 +8,6 @@ class UrlMappings {
         }
         "/"(controller: "home", action:"index")
         "/b/uc"(controller: "underConstruction", action:"index")
+        "/browse/${page}"(controller: "browse", action: "show")
     }
 }

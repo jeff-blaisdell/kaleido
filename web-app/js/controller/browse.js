@@ -3,16 +3,27 @@ define(['app', 'service/post'], function( app ) {
 
 	app.controller('BrowseController', ['$scope', 'Posts', function ($scope, Posts) {
 
-		$scope.currentPage = 0;
+		$scope.currentPage = 1;
 		$scope.posts = [];
 
-		Posts.get()
-			.success(function( data ) {
-				$scope.posts = data;
-			});
+		$scope.addMoreItems = function () {
+			selectPosts($scope.currentPage);
+		}
 
-        $scope.addMoreItems = function () {
+		function selectPosts(page) {
 
+            var params = {};
+            if ( page ) {
+                params.page = page;
+            }
+
+			Posts.get(params)
+				.success(function( data ) {
+					if (data && data.length > 0) {
+						$scope.posts = $scope.posts.concat(data);
+						$scope.currentPage++;
+					}
+				})
 		}
 
 	}]);
