@@ -28,31 +28,31 @@
     <g:layoutHead/>
     <r:layoutResources />
 </head>
-<body class="ng-view">
-    <div ng-controller="MainController">
-        <section class="nav-section l-globalwidth clearfix">
+<body class="kaleido">
+
+    <div class="browse l-globalwidth" ng-controller="MainController">
+
+        <section class="nav-section l-globalwidth clearfix" ng-controller="AccountLinksController">
             <nav class="pull-right">
                 <ul class="nav nav-pills">
-                    <li><g:link controller="browse" action="browse">Home</g:link></li>
-                    <sec:ifNotLoggedIn>
-                        <li><g:link controller="signIn" action="signin">Sign In</g:link></li>
-                    </sec:ifNotLoggedIn>
-                    <sec:ifLoggedIn>
-                        <li><g:link controller="signOut" action="signout">Sign Out</g:link></li>
-                        <li><g:link controller="account" action="account">My Account</g:link></li>
-                    </sec:ifLoggedIn>
+                    <li><a href="#">Home</a></li>
+                    <li ng-hide="isSignedIn()"><a href="#">Sign In</a></li>
+                    <li ng-show="isSignedIn()"><a href="#">Sign Out</a></li>
+                    <li ng-show="isSignedIn()"><a href="#">My Account</a></li>
                 </ul>
-                <sec:ifLoggedIn>
-                    <span class="nav-welcome">Welcome <sec:loggedInUserInfo field="firstName" /></span>
-                </sec:ifLoggedIn>
+                <span ng-show="isSignedIn()" class="nav-welcome">Welcome {{ user.firstName }}</span>
             </nav>
+
             <header class="header">
                 <img class="img-responsive" alt="Kaleido" src="http://placehold.it/1000x250/ffffff/00000/&text=Banner">
             </header>
         </section>
+
         <g:layoutBody/>
+
     </div>
-    <r:require modules="app"/>
-    <r:layoutResources />
+
+    <script data-main="/k/js/main.js" src="/k/bower_components/requirejs/require.js"></script>
+
 </body>
 </html>

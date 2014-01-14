@@ -41,7 +41,8 @@ require(['jquery',
 		 'app',
 		 'bootstrap',
 		 'controller/main',
-		 'controller/browse'
+		 'controller/browse',
+		 'controller/accountLinks'
 ], function( $, angular ) {
 
 	'use strict';

@@ -19,7 +19,6 @@ define(['angular',
 	app.config(function ($routeProvider) {
 		$routeProvider
 			.when('/', {
-				templateUrl: '/k/views/main.html',
 				controller: 'MainController'
 			})
 			.otherwise({
