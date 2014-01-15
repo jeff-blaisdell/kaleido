@@ -10,7 +10,7 @@ define(['app'], function( app ) {
 
 		$scope.isSignedIn = function () {
 			return false;
-		}
+		};
 
 	}]);
 });

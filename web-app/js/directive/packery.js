@@ -6,164 +6,165 @@
  * License: MIT
  */
 define(['angular', 'packery/packery', 'images-loaded'], function ( angular ) {
-    'use strict';
 
-    angular.module('packery', [])
-        .controller('PackeryCtrl', function controller($scope, $element, $timeout) {
-            var bricks = {};
-            var schedule = [];
-            var destroyed = false;
-            var self = this;
-            var timeout = null;
+	'use strict';
 
-            this.preserveOrder = false;
+	angular.module('packery', [])
+		.controller('PackeryCtrl', function controller($scope, $element, $timeout) {
+			var bricks = {};
+			var schedule = [];
+			var destroyed = false;
+			var self = this;
+			var timeout = null;
 
-            this.schedulePackeryOnce = function schedulePackeryOnce() {
-                var args = arguments;
-                var found = schedule.filter(function filterFn(item) {
-                    return item[0] === args[0];
-                }).length > 0;
+			this.preserveOrder = false;
 
-                if (!found) {
-                    this.schedulePackery.apply(null, arguments);
-                }
-            };
+			this.schedulePackeryOnce = function schedulePackeryOnce() {
+				var args = arguments;
+				var found = schedule.filter(function filterFn(item) {
+					return item[0] === args[0];
+				}).length > 0;
 
-            // Make sure it's only executed once within a reasonable time-frame in
-            // case multiple elements are removed or added at once.
-            this.schedulePackery = function schedulePackery() {
-                if (timeout) {
-                    $timeout.cancel(timeout);
-                }
+				if (!found) {
+					this.schedulePackery.apply(null, arguments);
+				}
+			};
 
-                schedule.push([].slice.call(arguments));
+			// Make sure it's only executed once within a reasonable time-frame in
+			// case multiple elements are removed or added at once.
+			this.schedulePackery = function schedulePackery() {
+				if (timeout) {
+					$timeout.cancel(timeout);
+				}
 
-                timeout = $timeout(function runPackery() {
-                    if (destroyed) {
-                        return;
-                    }
-                    schedule.forEach(function scheduleForEach(args) {
-                        $element.packery.apply($element, args);
-                    });
-                    schedule = [];
-                }, 30);
-            };
+				schedule.push([].slice.call(arguments));
 
-            function defaultLoaded($element) {
-                $element.addClass('loaded');
-            }
+				timeout = $timeout(function runPackery() {
+					if (destroyed) {
+						return;
+					}
+					schedule.forEach(function scheduleForEach(args) {
+						$element.packery.apply($element, args);
+					});
+					schedule = [];
+				}, 30);
+			};
 
-            this.appendBrick = function appendBrick(element, id) {
-                if (destroyed) {
-                    return;
-                }
+			function defaultLoaded($element) {
+				$element.addClass('loaded');
+			}
 
-                function _append() {
-                    if (Object.keys(bricks).length === 0) {
-                        $element.packery('resize');
-                    }
-                    if (bricks[id] === undefined) {
-                        // Keep track of added elements.
-                        bricks[id] = true;
-                        defaultLoaded(element);
-                        $element.packery('appended', element, true);
-                    }
-                }
+			this.appendBrick = function appendBrick(element, id) {
+				if (destroyed) {
+					return;
+				}
 
-                function _layout() {
-                    // I wanted to make this dynamic but ran into huuuge memory leaks
-                    // that I couldn't fix. If you know how to dynamically add a
-                    // callback so one could say <packery loaded="callback($element)">
-                    // please submit a pull request!
-                    self.schedulePackeryOnce('layout');
-                }
+				function _append() {
+					if (Object.keys(bricks).length === 0) {
+						$element.packery('resize');
+					}
+					if (bricks[id] === undefined) {
+						// Keep track of added elements.
+						bricks[id] = true;
+						defaultLoaded(element);
+						$element.packery('appended', element, true);
+					}
+				}
 
-                if (self.preserveOrder) {
-                    _append();
-                    element.imagesLoaded(_layout);
-                } else {
-                    element.imagesLoaded(function imagesLoaded() {
-                        _append();
-                        _layout();
-                    });
-                }
-            };
+				function _layout() {
+					// I wanted to make this dynamic but ran into huuuge memory leaks
+					// that I couldn't fix. If you know how to dynamically add a
+					// callback so one could say <packery loaded="callback($element)">
+					// please submit a pull request!
+					self.schedulePackeryOnce('layout');
+				}
 
-            this.removeBrick = function removeBrick(id, element) {
-                if (destroyed) {
-                    return;
-                }
+				if (self.preserveOrder) {
+					_append();
+					element.imagesLoaded(_layout);
+				} else {
+					element.imagesLoaded(function imagesLoaded() {
+						_append();
+						_layout();
+					});
+				}
+			};
 
-                delete bricks[id];
-                $element.packery('remove', element);
-                this.schedulePackeryOnce('layout');
-            };
+			this.removeBrick = function removeBrick(id, element) {
+				if (destroyed) {
+					return;
+				}
 
-            this.destroy = function destroy() {
-                destroyed = true;
+				delete bricks[id];
+				$element.packery('remove', element);
+				this.schedulePackeryOnce('layout');
+			};
 
-                if ($element.data('packery')) {
-                    // Gently uninitialize if still present
-                    $element.packery('destroy');
-                }
-                $scope.$emit('packery.destroyed');
+			this.destroy = function destroy() {
+				destroyed = true;
 
-                bricks = [];
-            };
+				if ($element.data('packery')) {
+					// Gently uninitialize if still present
+					$element.packery('destroy');
+				}
+				$scope.$emit('packery.destroyed');
 
-            this.reload = function reload() {
-                $element.packery();
-                $scope.$emit('packery.reloaded');
-            };
+				bricks = [];
+			};
+
+			this.reload = function reload() {
+				$element.packery();
+				$scope.$emit('packery.reloaded');
+			};
 
 
-        }).directive('packery', function packeryDirective() {
-            return {
-                restrict: 'AE',
-                controller: 'PackeryCtrl',
-                link: {
-                    pre: function preLink(scope, element, attrs, ctrl) {
-                        var attrOptions = scope.$eval(attrs.packery || attrs.packeryOptions);
-                        var options = angular.extend({
-                            itemSelector: attrs.itemSelector || '.packery-brick',
-                            columnWidth: parseInt(attrs.columnWidth, 10)
-                        }, attrOptions || {});
-                        element.packery(options);
-                        var preserveOrder = scope.$eval(attrs.preserveOrder);
-                        ctrl.preserveOrder = (preserveOrder !== false && attrs.preserveOrder !== undefined);
+		}).directive('packery', function packeryDirective() {
+			return {
+				restrict: 'AE',
+				controller: 'PackeryCtrl',
+				link: {
+					pre: function preLink(scope, element, attrs, ctrl) {
+						var attrOptions = scope.$eval(attrs.packery || attrs.packeryOptions);
+						var options = angular.extend({
+							itemSelector: attrs.itemSelector || '.packery-brick',
+							columnWidth: parseInt(attrs.columnWidth, 10)
+						}, attrOptions || {});
+						element.packery(options);
+						var preserveOrder = scope.$eval(attrs.preserveOrder);
+						ctrl.preserveOrder = (preserveOrder !== false && attrs.preserveOrder !== undefined);
 
-                        scope.$emit('packery.created', element);
-                        scope.$on('$destroy', ctrl.destroy);
-                    }
-                }
-            };
-        }).directive('packeryBrick', function packeryBrickDirective() {
-            return {
-                restrict: 'AC',
-                require: '^packery',
-                scope: true,
-                link: {
-                    pre: function preLink(scope, element, attrs, ctrl) {
-                        var id = scope.$id, index;
+						scope.$emit('packery.created', element);
+						scope.$on('$destroy', ctrl.destroy);
+					}
+				}
+			};
+		}).directive('packeryBrick', function packeryBrickDirective() {
+			return {
+				restrict: 'AC',
+				require: '^packery',
+				scope: true,
+				link: {
+					pre: function preLink(scope, element, attrs, ctrl) {
+						var id = scope.$id, index;
 
-                        ctrl.appendBrick(element, id);
-                        element.on('$destroy', function () {
-                            ctrl.removeBrick(id, element);
-                        });
+						ctrl.appendBrick(element, id);
+						element.on('$destroy', function () {
+							ctrl.removeBrick(id, element);
+						});
 
-                        scope.$on('packery.reload', function () {
-                            ctrl.reload();
-                        });
+						scope.$on('packery.reload', function () {
+							ctrl.reload();
+						});
 
-                        scope.$watch('$index', function () {
-                            if (index !== undefined && index !== scope.$index) {
-                                ctrl.schedulePackeryOnce('reloadItems');
-                                ctrl.schedulePackeryOnce('layout');
-                            }
-                            index = scope.$index;
-                        });
-                    }
-                }
-            };
-        });
+						scope.$watch('$index', function () {
+							if (index !== undefined && index !== scope.$index) {
+								ctrl.schedulePackeryOnce('reloadItems');
+								ctrl.schedulePackeryOnce('layout');
+							}
+							index = scope.$index;
+						});
+					}
+				}
+			};
+		});
 });

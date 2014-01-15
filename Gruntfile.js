@@ -29,14 +29,14 @@ module.exports = function (grunt) {
 		watch: {
 			js: {
 				files: ['<%= yeoman.app %>/js/{,*/}*.js'],
-				tasks: ['newer:jshint:all'],
+				tasks: ['jshint:all'],
 				options: {
 					livereload: true
 				}
 			},
 			jsTest: {
 				files: ['test/spec/{,*/}*.js'],
-				tasks: ['newer:jshint:test', 'karma']
+				tasks: ['jshint:test', 'karma']
 			},
 			styles: {
 				files: ['<%= yeoman.app %>/css/{,*/}*.css'],

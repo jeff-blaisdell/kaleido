@@ -19,7 +19,7 @@ requirejs.config({
 		'outlayer': '../bower_components/outlayer',
 		'packery': '../bower_components/packery/js',
 		'jquery-bridget': '../bower_components/jquery-bridget/jquery.bridget',
-        'images-loaded': '../bower_components/imagesLoaded/imagesLoaded'
+		'images-loaded': '../bower_components/imagesLoaded/imagesLoaded'
 	},
 	shim: {
 		'jquery': {
@@ -34,9 +34,9 @@ requirejs.config({
 		'angular-sanitize': ['angular'],
 		'angular-route': ['angular'],
 		'ng-infinite-scroll': ['angular'],
-        'jquery-bridget': ['jquery'],
-        'packery/packery': ['jquery-bridget'],
-        'images-loaded': ['jquery']
+		'jquery-bridget': ['jquery'],
+		'packery/packery': ['jquery-bridget'],
+		'images-loaded': ['jquery']
 	}
 });
 

@@ -1,11 +1,11 @@
 define(['angular',
-    'jquery',
+	'jquery',
 	'angular-cookies',
 	'angular-resource',
 	'angular-sanitize',
 	'angular-route',
 	'ng-infinite-scroll',
-    'directive/packery'
+	'directive/packery'
 ], function( angular ) {
 
 	'use strict';
@@ -16,7 +16,7 @@ define(['angular',
 		'ngSanitize',
 		'ngRoute',
 		'infinite-scroll',
-        'packery'
+		'packery'
 	]);
 
 	app.config(function ($routeProvider) {
@@ -30,6 +30,5 @@ define(['angular',
 	});
 
 	return app;
-
 
 });

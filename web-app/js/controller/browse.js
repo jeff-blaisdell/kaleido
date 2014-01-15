@@ -1,4 +1,5 @@
 define(['app', 'service/post'], function( app ) {
+
 	'use strict';
 
 	app.controller('BrowseController', ['$scope', 'Posts', function ($scope, Posts) {
@@ -8,14 +9,14 @@ define(['app', 'service/post'], function( app ) {
 
 		$scope.addMoreItems = function () {
 			selectPosts($scope.currentPage);
-		}
+		};
 
 		function selectPosts(page) {
 
-            var params = {};
-            if ( page ) {
-                params.page = page;
-            }
+			var params = {};
+			if ( page ) {
+				params.page = page;
+			}
 
 			Posts.get(params)
 				.success(function( data ) {
@@ -23,7 +24,7 @@ define(['app', 'service/post'], function( app ) {
 						$scope.posts = $scope.posts.concat(data);
 						$scope.currentPage++;
 					}
-				})
+				});
 		}
 
 	}]);
