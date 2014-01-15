@@ -9,16 +9,17 @@ requirejs.config({
 		'angular-sanitize': '../bower_components/angular-sanitize/angular-sanitize',
 		'angular-route': '../bower_components/angular-route/angular-route',
 		'ng-infinite-scroll': '../bower_components/nginfinitescroll/build/ng-infinite-scroll',
-		'classie': '../bower_components/classie/classie',
-		'eventie': '../bower_components/eventie/eventie',
-		'doc-ready': '../bower_components/doc-ready/doc-ready',
-		'eventEmitter': '../bower_components/eventEmitter/EventEmitter',
-		'get-style-property': '../bower_components/get-style-property/get-style-property',
-		'get-size': '../bower_components/get-size/get-size',
-		'matches-selector': '../bower_components/matches-selector/matches-selector',
-		'outlayer': '../bower_components/outlayer/outlayer',
-		'packery': '../bower_components/packery/js/packery',
-		'jquery-bridget': '../bower_components/jquery-bridget/jquery.bridget'
+		'classie': '../bower_components/classie',
+		'eventie': '../bower_components/eventie',
+		'doc-ready': '../bower_components/doc-ready',
+		'eventEmitter': '../bower_components/eventEmitter',
+		'get-style-property': '../bower_components/get-style-property',
+		'get-size': '../bower_components/get-size',
+		'matches-selector': '../bower_components/matches-selector',
+		'outlayer': '../bower_components/outlayer',
+		'packery': '../bower_components/packery/js',
+		'jquery-bridget': '../bower_components/jquery-bridget/jquery.bridget',
+        'images-loaded': '../bower_components/imagesLoaded/imagesLoaded'
 	},
 	shim: {
 		'jquery': {
@@ -32,7 +33,10 @@ requirejs.config({
 		'angular-cookies': ['angular'],
 		'angular-sanitize': ['angular'],
 		'angular-route': ['angular'],
-		'ng-infinite-scroll': ['angular']
+		'ng-infinite-scroll': ['angular'],
+        'jquery-bridget': ['jquery'],
+        'packery/packery': ['jquery-bridget'],
+        'images-loaded': ['jquery']
 	}
 });
 
