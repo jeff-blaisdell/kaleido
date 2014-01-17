@@ -8,6 +8,7 @@ requirejs.config({
 		'angular-cookies': '../bower_components/angular-cookies/angular-cookies',
 		'angular-sanitize': '../bower_components/angular-sanitize/angular-sanitize',
 		'angular-route': '../bower_components/angular-route/angular-route',
+        'angular-animate': '../bower_components/angular-animate/angular-animate',
 		'ng-infinite-scroll': '../bower_components/nginfinitescroll/build/ng-infinite-scroll',
 		'classie': '../bower_components/classie',
 		'eventie': '../bower_components/eventie',
@@ -33,6 +34,7 @@ requirejs.config({
 		'angular-cookies': ['angular'],
 		'angular-sanitize': ['angular'],
 		'angular-route': ['angular'],
+        'angular-animate': ['angular'],
 		'ng-infinite-scroll': ['angular'],
 		'jquery-bridget': ['jquery'],
 		'packery/packery': ['jquery-bridget'],
@@ -46,7 +48,8 @@ require(['jquery',
 		 'bootstrap',
 		 'controller/main',
 		 'controller/browse',
-		 'controller/accountLinks'
+		 'controller/accountLinks',
+         'controller/post'
 ], function( $, angular ) {
 
 	'use strict';

@@ -1,4 +1,5 @@
 @import url('progress-bar.css');
+@import url('post.css');
 
 .browse-post {
     margin: 10px 10px 10px 0px;
@@ -26,6 +27,7 @@
 .size-1of2 { width: 48%; }
 .size-1of3 { width: 32.33333%; }
 .column { float: left; }
+
 
 @media screen and (min-width: 40em) {
     .browse-posts[data-columns]::before {

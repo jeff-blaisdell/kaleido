@@ -19,13 +19,21 @@ define(['angular',
 		'packery'
 	]);
 
-	app.config(function ($routeProvider) {
+	app.config(function ($routeProvider, $locationProvider) {
+
+        $locationProvider.html5Mode(true);
+
 		$routeProvider
-			.when('/', {
+			.when('/k', {
+                templateUrl: '/k/view/browse.html',
 				controller: 'MainController'
 			})
+            .when('/k/b/p/:postId', {
+                templateUrl: '/k/view/post.html',
+                controller: 'PostController'
+            })
 			.otherwise({
-				redirectTo: '/'
+				redirectTo: '/k'
 			});
 	});
 

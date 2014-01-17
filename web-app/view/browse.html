@@ -1,0 +1,8 @@
+<div packery class="browse-posts clearfix" ng-controller="BrowseController" ng-show="posts" infinite-scroll="addMoreItems()">
+    <div class="browse-post packery-brick" ng-repeat="post in posts">
+        <a ng-href="/k/b/p/{{ post.id }}">
+            <img class="ng-cloak" ng-src="{{ post.imageUrl }}" alt="{{ post.title }}">
+            <h5 class="ng-cloak">{{ post.title }}</h5>
+        </a>
+    </div>
+</div>

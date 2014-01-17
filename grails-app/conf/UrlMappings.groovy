@@ -7,7 +7,9 @@ class UrlMappings {
             }
         }
         "/"(controller: "home", action:"index")
+        "/b/p/${postId}"(controller: "home", action:"index")
         "/b/uc"(controller: "underConstruction", action:"index")
         "/browse/${page}"(controller: "browse", action: "show")
+        "/posts/${id}"(controller: "post", action: "show")
     }
 }
