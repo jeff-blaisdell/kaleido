@@ -4,7 +4,7 @@ define(['app', 'service/post'], function( app ) {
 
 	app.controller('BrowseController', ['$scope', '$state', '$location', 'Posts', function ($scope, $state, $location, Posts) {
 
-        $scope.isPostStateActive = ($state.current.name === 'post');
+		$scope.isPostStateActive = ($state.current.name === 'home.post');
 		$scope.currentPage = 1;
 		$scope.posts = [];
 
@@ -12,16 +12,16 @@ define(['app', 'service/post'], function( app ) {
 			selectPosts($scope.currentPage);
 		};
 
-        $scope.$on('$stateChangeStart', function(evt, toState, toParams, fromState, fromParams) {
-            if ( toState.name === 'home' ) {
-                $scope.isPostStateActive = false;
-                if ( fromState.name === 'post' ) {
-                    $location.hash(fromParams.postId);
-                }
-            } else if ( toState.name === 'post' ) {
-                $scope.isPostStateActive = true;
-            }
-        });
+		$scope.$on('$stateChangeStart', function(evt, toState, toParams, fromState, fromParams) {
+			if ( toState.name === 'home' ) {
+				$scope.isPostStateActive = false;
+				if ( fromState.name === 'home.post' ) {
+					$location.hash(fromParams.postId);
+				}
+			} else if ( toState.name === 'home.post' ) {
+				$scope.isPostStateActive = true;
+			}
+		});
 
 		function selectPosts(page) {
 

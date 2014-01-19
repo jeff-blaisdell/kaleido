@@ -1,15 +1,15 @@
 define(['app'], function( app ) {
-    'use strict';
+	'use strict';
 
-    app.controller('PostController', ['$scope', '$stateParams', 'Posts', function ($scope, $stateParams, Posts) {
+	app.controller('PostController', ['$scope', '$stateParams', 'Posts', function ($scope, $stateParams, Posts) {
 
-        $scope.post = undefined;
+		$scope.post = undefined;
 
-        Posts.get({ 'id' : $stateParams.postId })
-            .success(function( data ) {
-                $scope.post = data;
-            });
+		Posts.get({ 'id' : $stateParams.postId })
+			.success(function( data ) {
+				$scope.post = data;
+			});
 
-    }]);
+	}]);
 
 });

@@ -8,8 +8,8 @@ requirejs.config({
 		'angular-cookies': '../bower_components/angular-cookies/angular-cookies',
 		'angular-sanitize': '../bower_components/angular-sanitize/angular-sanitize',
 		'angular-route': '../bower_components/angular-route/angular-route',
-        'angular-animate': '../bower_components/angular-animate/angular-animate',
-        'angular-ui-router': '../bower_components/angular-ui-router/angular-ui-router',
+		'angular-animate': '../bower_components/angular-animate/angular-animate',
+		'angular-ui-router': '../bower_components/angular-ui-router/angular-ui-router',
 		'ng-infinite-scroll': '../bower_components/nginfinitescroll/build/ng-infinite-scroll',
 		'classie': '../bower_components/classie',
 		'eventie': '../bower_components/eventie',
@@ -35,8 +35,8 @@ requirejs.config({
 		'angular-cookies': ['angular'],
 		'angular-sanitize': ['angular'],
 		'angular-route': ['angular'],
-        'angular-animate': ['angular'],
-        'angular-ui-router': ['angular'],
+		'angular-animate': ['angular'],
+		'angular-ui-router': ['angular'],
 		'ng-infinite-scroll': ['angular'],
 		'jquery-bridget': ['jquery'],
 		'packery/packery': ['jquery-bridget'],
@@ -51,7 +51,7 @@ require(['jquery',
 		 'controller/main',
 		 'controller/browse',
 		 'controller/accountLinks',
-         'controller/post'
+		 'controller/post'
 ], function( $, angular ) {
 
 	'use strict';

@@ -3,7 +3,7 @@ define(['angular',
 	'angular-cookies',
 	'angular-resource',
 	'angular-sanitize',
-    'angular-ui-router',
+	'angular-ui-router',
 	'ng-infinite-scroll',
 	'directive/packery'
 ], function( angular ) {
@@ -14,42 +14,34 @@ define(['angular',
 		'ngCookies',
 		'ngResource',
 		'ngSanitize',
-        'ui.router',
+		'ui.router',
 		'infinite-scroll',
 		'packery'
 	]);
 
 	app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {
 
-        $locationProvider.html5Mode(true);
+		$locationProvider.html5Mode(true);
 
 
-        // For any unmatched url, redirect to /state1
-        $urlRouterProvider.otherwise("/k");
+		// For any unmatched url, redirect to /state1
+		$urlRouterProvider.otherwise('/k');
 
-        // Define States
-        var states = {
-            home : {
-                name        : 'home',
-                url         : '/k',
-                templateUrl : '/k/view/browse.html'
-            },
-            post : {
-                name        : 'post',
-                parent      : 'home',
-                url         : '/p/{postId}',
-                views       : {
-                    '': {
-                        templateUrl : '/k/view/post.html'
-                    }
-                }
-            }
-        };
-
-        // Add States to State Manager.
-        $stateProvider
-            .state(states.home)
-            .state(states.post);
+		// Define Application States
+		$stateProvider
+			.state('home', {
+				url         : '/k',
+				templateUrl : '/k/view/browse.html'
+			})
+			.state('home.post', {
+				url         : '/p/{postId}',
+				templateUrl : '/k/view/browse.html',
+				views       : {
+					'home.post' : {
+						templateUrl : '/k/view/post.html'
+					}
+				}
+			});
 
 	});
 
