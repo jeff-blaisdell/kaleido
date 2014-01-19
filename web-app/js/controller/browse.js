@@ -1,4 +1,4 @@
-define(['app', 'service/post'], function( app ) {
+define(['app', 'service/post', 'service/state'], function( app ) {
 
 	'use strict';
 

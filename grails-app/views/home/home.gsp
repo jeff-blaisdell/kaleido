@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'home.css')}" type="text/css">
 </head>
 <body>
-    <section class="ng-view">
+    <section ui-view>
 
     </section>
 </body>

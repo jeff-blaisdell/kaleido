@@ -45,7 +45,8 @@
             </nav>
 
             <header class="header">
-                <img class="img-responsive" alt="Kaleido" src="http://placehold.it/1000x250/ffffff/00000/&text=Banner">
+                <!--<img class="img-responsive" alt="Kaleido" src="http://placehold.it/1000x250/ffffff/00000/&text=Banner">-->
+                <h1>Banner</h1>
             </header>
         </section>
 
