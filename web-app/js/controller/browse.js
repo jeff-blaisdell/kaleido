@@ -1,15 +1,27 @@
-define(['app', 'service/post', 'service/state'], function( app ) {
+define(['app', 'service/post'], function( app ) {
 
 	'use strict';
 
-	app.controller('BrowseController', ['$scope', 'Posts', function ($scope, Posts) {
+	app.controller('BrowseController', ['$scope', '$state', '$location', 'Posts', function ($scope, $state, $location, Posts) {
 
+        $scope.isPostStateActive = ($state.current.name === 'post');
 		$scope.currentPage = 1;
 		$scope.posts = [];
 
 		$scope.addMoreItems = function () {
 			selectPosts($scope.currentPage);
 		};
+
+        $scope.$on('$stateChangeStart', function(evt, toState, toParams, fromState, fromParams) {
+            if ( toState.name === 'home' ) {
+                $scope.isPostStateActive = false;
+                if ( fromState.name === 'post' ) {
+                    $location.hash(fromParams.postId);
+                }
+            } else if ( toState.name === 'post' ) {
+                $scope.isPostStateActive = true;
+            }
+        });
 
 		function selectPosts(page) {
 

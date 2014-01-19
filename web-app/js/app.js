@@ -28,29 +28,28 @@ define(['angular',
         $urlRouterProvider.otherwise("/k");
 
         // Define States
-        var home = {
-            name        : 'home',
-            url         : '/k',
-            templateUrl : '/k/view/browse.html',
-            controller  : 'BrowseController'
-        };
-
-        var post = {
-            name        : 'post',
-            parent      : 'home',
-            url         : '/p/:postId',
-            views       : {
-                '': {
-                    templateUrl : '/k/view/post.html',
-                    controller  : 'PostController'
+        var states = {
+            home : {
+                name        : 'home',
+                url         : '/k',
+                templateUrl : '/k/view/browse.html'
+            },
+            post : {
+                name        : 'post',
+                parent      : 'home',
+                url         : '/p/{postId}',
+                views       : {
+                    '': {
+                        templateUrl : '/k/view/post.html'
+                    }
                 }
             }
         };
 
         // Add States to State Manager.
         $stateProvider
-            .state(home)
-            .state(post);
+            .state(states.home)
+            .state(states.post);
 
 	});
 

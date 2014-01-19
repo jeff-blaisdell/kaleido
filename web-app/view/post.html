@@ -1,16 +1,14 @@
-<div ng-controller="PostController">
+<div ng-controller="PostController" ng-show="isPostStateActive">
     <div class="panel post-panel">
         <div class="panel-body">
-            <!--<img class="ng-cloak" ng-src="{{ post.imageUrl }}" alt="{{ post.title }}">-->
-            <img class="ng-cloak" ng-src="/k/images/offline.jpg" alt="{{ post.title }}">
+            <img class="ng-cloak" ng-src="{{ post.imageUrl }}" alt="{{ post.title }}">
             <h5 class="ng-cloak">{{ post.title }}</h5>
         </div>
    </div>
     <div ng-repeat="p in post.posts">
         <div class="panel post-panel">
             <div class="panel-body">
-                <!--<img class="ng-cloak" ng-src="{{ p.imageUrl }}" alt="{{ p.title }}">-->
-                <img class="ng-cloak" ng-src="/k/images/offline.jpg" alt="{{ p.title }}">
+                <img class="ng-cloak" ng-src="{{ p.imageUrl }}" alt="{{ p.title }}">
                 <h5 class="ng-cloak">{{ p.title }}</h5>
             </div>
         </div>

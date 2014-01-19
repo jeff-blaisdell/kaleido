@@ -1,10 +1,9 @@
-<div ui-view></div>
 <div ng-controller="BrowseController">
-    <div packery class="browse-posts clearfix" infinite-scroll="addMoreItems()">
+    <div ui-view></div>
+    <div packery class="browse-posts clearfix" infinite-scroll="addMoreItems()" ng-hide="isPostStateActive">
         <div class="browse-post packery-brick" ng-repeat="post in posts">
-            <a ui-sref="post({postId:post.id})">
-                <!--<img class="ng-cloak" ng-src="{{ post.imageUrl }}" alt="{{ post.title }}">-->
-                <img class="ng-cloak" ng-src="/k/images/offline.jpg" alt="{{ post.title }}">
+            <a id="{{ post.id }}" ui-sref="post({postId:post.id})">
+                <img class="ng-cloak" ng-src="{{ post.imageUrl }}" alt="{{ post.title }}">
                 <h5 class="ng-cloak">{{ post.title }}</h5>
             </a>
         </div>
