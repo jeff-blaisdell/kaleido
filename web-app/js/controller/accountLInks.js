@@ -1,4 +1,6 @@
-define(['app'], function( app ) {
+define([
+	'app'
+], function( app ) {
 	'use strict';
 
 	app.controller('AccountLinksController', ['$scope', function ($scope) {

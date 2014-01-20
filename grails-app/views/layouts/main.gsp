@@ -33,13 +33,13 @@
 
     <div class="browse l-globalwidth" ng-controller="MainController">
 
-        <section class="nav-section l-globalwidth clearfix" ng-controller="AccountLinksController">
+        <section class="nav-section l-globalwidth clearfix ng-cloak" ng-controller="AccountLinksController">
             <nav class="pull-right">
                 <ul class="nav nav-pills">
-                    <li><a href="#">Home</a></li>
-                    <li ng-hide="isSignedIn()"><a href="#">Sign In</a></li>
-                    <li ng-show="isSignedIn()"><a href="#">Sign Out</a></li>
-                    <li ng-show="isSignedIn()"><a href="#">My Account</a></li>
+                    <li><a target="_self" href="/k">Home</a></li>
+                    <li ng-hide="isSignedIn()"><a target="_self" href="/k/a/si">Sign In</a></li>
+                    <li ng-show="isSignedIn()"><a target="_self" href="/k/a/so">Sign Out</a></li>
+                    <li ng-show="isSignedIn()"><a target="_self" href="/k/a">My Account</a></li>
                 </ul>
                 <span ng-show="isSignedIn()" class="nav-welcome">Welcome {{ user.firstName }}</span>
             </nav>
