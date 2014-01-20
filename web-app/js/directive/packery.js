@@ -5,7 +5,11 @@
  * Pascal Hartig, weluse GmbH, http://weluse.de/
  * License: MIT
  */
-define(['angular', 'packery/packery', 'images-loaded'], function ( angular ) {
+define([
+	'angular',
+	'packery/packery',
+	'images-loaded'
+], function ( angular ) {
 
 	'use strict';
 

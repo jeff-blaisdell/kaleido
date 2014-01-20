@@ -44,14 +44,15 @@ requirejs.config({
 	}
 });
 
-require(['jquery',
-		 'angular',
-		 'app',
-		 'bootstrap',
-		 'controller/main',
-		 'controller/browse',
-		 'controller/accountLinks',
-		 'controller/post'
+require([
+	'jquery',
+	'angular',
+	'app',
+	'bootstrap',
+	'controller/main',
+	'controller/browse',
+	'controller/accountLinks',
+	'controller/post'
 ], function( $, angular ) {
 
 	'use strict';

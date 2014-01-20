@@ -1,4 +1,7 @@
-define(['app', 'service/post'], function( app ) {
+define([
+	'app',
+	'service/post'
+], function( app ) {
 
 	'use strict';
 
@@ -42,17 +45,17 @@ define(['app', 'service/post'], function( app ) {
 			}
 		}
 
-        /**
-         * Callback for infinite-scroll directive used to fetch
-         * next page of content.
-         */
+		/**
+		 * Callback for infinite-scroll directive used to fetch
+		 * next page of content.
+		 */
 		function addMoreItems() {
 			selectPosts($scope.currentPage);
 		}
 
-        /**
-         * Initialize $scope.
-         */
+		/**
+		 * Initialize $scope.
+		 */
 		$scope.isPostStateActive = ($state.current.name === 'home.post');
 		$scope.currentPage = 1;
 		$scope.posts = [];

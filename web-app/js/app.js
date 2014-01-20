@@ -1,4 +1,5 @@
-define(['angular',
+define([
+	'angular',
 	'jquery',
 	'angular-cookies',
 	'angular-resource',
