@@ -6,6 +6,7 @@ define([
 	'angular-sanitize',
 	'angular-ui-router',
 	'ng-infinite-scroll',
+    'file-upload',
 	'directive/packery'
 ], function( angular ) {
 
@@ -17,7 +18,8 @@ define([
 		'ngSanitize',
 		'ui.router',
 		'infinite-scroll',
-		'packery'
+		'packery',
+        'angularFileUpload'
 	]);
 
 	app.config(function ($stateProvider, $urlRouterProvider, $locationProvider) {

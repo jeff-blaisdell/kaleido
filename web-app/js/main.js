@@ -21,13 +21,17 @@ requirejs.config({
 		'outlayer': '../bower_components/outlayer',
 		'packery': '../bower_components/packery/js',
 		'jquery-bridget': '../bower_components/jquery-bridget/jquery.bridget',
-		'images-loaded': '../bower_components/imagesLoaded/imagesLoaded'
+		'images-loaded': '../bower_components/imagesLoaded/imagesLoaded',
+        'file-upload': '../bower_components/ng-file-upload/angular-file-upload',
+        'file-upload-html5-shim': '../bower_components/ng-file-upload/angular-file-upload-html5-shim',
+        'file-upload-shim': '../bower_components/ng-file-upload/angular-file-upload-shim'
 	},
 	shim: {
 		'jquery': {
 			exports: '$'
 		},
 		'angular': {
+            deps: ['file-upload-shim'],
 			exports: 'angular'
 		},
 		'bootstrap': ['jquery'],
@@ -38,6 +42,7 @@ requirejs.config({
 		'angular-animate': ['angular'],
 		'angular-ui-router': ['angular'],
 		'ng-infinite-scroll': ['angular'],
+        'file-upload': ['angular'],
 		'jquery-bridget': ['jquery'],
 		'packery/packery': ['jquery-bridget'],
 		'images-loaded': ['jquery']
