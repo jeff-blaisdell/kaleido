@@ -9,7 +9,7 @@ requirejs.config({
 		'angular-sanitize': '../bower_components/angular-sanitize/angular-sanitize',
 		'angular-route': '../bower_components/angular-route/angular-route',
 		'angular-animate': '../bower_components/angular-animate/angular-animate',
-		'angular-ui-router': '../bower_components/angular-ui-router/angular-ui-router',
+		'angular-ui-router': '../bower_components/angular-ui-router/release/angular-ui-router',
 		'ng-infinite-scroll': '../bower_components/nginfinitescroll/build/ng-infinite-scroll',
 		'classie': '../bower_components/classie',
 		'eventie': '../bower_components/eventie',
