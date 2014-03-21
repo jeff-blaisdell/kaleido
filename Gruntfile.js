@@ -27,60 +27,10 @@ module.exports = function (grunt) {
 
 		// Watches files for changes and runs tasks based on the changed files
 		watch: {
-			js: {
-				files: ['<%= yeoman.app %>/js/{,*/}*.js'],
-				tasks: ['jshint:all'],
-				options: {
-					livereload: true
-				}
-			},
             lessCss: {
-                tasks: ['less']
-            },
-			livereload: {
-				options: {
-					livereload: '<%= connect.options.livereload %>'
-				},
-				files: [
-					'<%= yeoman.app %>/{,*/}*.html',
-					'.tmp/styles/{,*/}*.css',
-					'<%= yeoman.app %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
-				]
-			}
-		},
-
-		// The actual grunt server settings
-		connect: {
-			options: {
-				port: 8080,
-				// Change this to '0.0.0.0' to access the server from outside.
-				hostname: 'localhost',
-				livereload: 35729
-			},
-			livereload: {
-				options: {
-					open: true,
-					base: [
-						'.tmp',
-						'<%= yeoman.app %>'
-					]
-				}
-			},
-			test: {
-				options: {
-					port: 9001,
-					base: [
-						'.tmp',
-						'test',
-						'<%= yeoman.app %>'
-					]
-				}
-			},
-			dist: {
-				options: {
-					base: '<%= yeoman.dist %>'
-				}
-			}
+                tasks: ['less:development'],
+                files: ['<%= yeoman.app %>/theme/*.less', '<%= yeoman.app %>/less/*.less'],
+            }
 		},
 
 		// Make sure code styles are up to par and there are no obvious mistakes
@@ -150,16 +100,7 @@ module.exports = function (grunt) {
         }
 	});
 
-	grunt.registerTask('serve', function () {
-
-		grunt.task.run([
-			//'connect:livereload',
-			'watch'
-		]);
-	});
-
 	grunt.registerTask('test', [
-		'connect:test',
 		'karma'
 	]);
 
