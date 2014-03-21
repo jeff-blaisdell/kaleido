@@ -20,31 +20,17 @@
             e.preventDefault(); // no page reload
         }
     </script>
+
     <g:layoutHead/>
     <r:layoutResources />
 </head>
 <body class="kaleido">
 
-    <div class="browse l-globalwidth" ng-controller="MainController">
-
-        <section class="nav-section l-globalwidth clearfix ng-cloak" ng-controller="AccountLinksController">
-            <nav class="pull-right">
-                <ul class="nav nav-pills">
-                    <li><a target="_self" href="/k">Home</a></li>
-                    <li ng-hide="isSignedIn()"><a target="_self" href="/k/a/si">Sign In</a></li>
-                    <li ng-show="isSignedIn()"><a target="_self" href="/k/a/so">Sign Out</a></li>
-                    <li ng-show="isSignedIn()"><a target="_self" href="/k/a">My Account</a></li>
-                </ul>
-                <span ng-show="isSignedIn()" class="nav-welcome">Welcome {{ user.firstName }}</span>
-            </nav>
-
-            <header class="header">
-                <img class="img-responsive" alt="Kaleido" src="http://placehold.it/1000x250/ffffff/00000/&text=Banner">
-            </header>
-        </section>
-
-        <g:layoutBody/>
-
+    <div ng-controller="MainController">
+        <g:render template="/layouts/navbar"/>
+        <div class="l-globalwidth">
+            <g:layoutBody/>
+        </div>
     </div>
 
     <script data-main="/k/js/main.js" src="/k/bower_components/requirejs/require.js"></script>
