@@ -1,103 +1,83 @@
-
-#noTrespassingOuterBarG{
-    height:22px;
-    width:175px;
-    border:2px solid #000000;
-    overflow:hidden;
-    background-color:#FFFFFF}
-
-.noTrespassingBarLineG{
-    background-color:#000000;
-    float:left;
-    width:15px;
-    height:131px;
-    margin-right:26px;
-    margin-top:-31px;
-    -moz-transform:rotate(45deg);
-    -webkit-transform:rotate(45deg);
-    -ms-transform:rotate(45deg);
-    -o-transform:rotate(45deg);
-    transform:rotate(45deg);
+#noTrespassingOuterBarG {
+  height: 22px;
+  width: 175px;
+  border: 2px solid #000000;
+  overflow: hidden;
+  background-color: #ffffff;
 }
-
-.noTrespassingAnimationG{
-    width:258px;
-    -moz-animation-name:noTrespassingAnimationG;
-    -moz-animation-duration:0.6s;
-    -moz-animation-iteration-count:infinite;
-    -moz-animation-timing-function:linear;
-    -webkit-animation-name:noTrespassingAnimationG;
-    -webkit-animation-duration:0.6s;
-    -webkit-animation-iteration-count:infinite;
-    -webkit-animation-timing-function:linear;
-    -ms-animation-name:noTrespassingAnimationG;
-    -ms-animation-duration:0.6s;
-    -ms-animation-iteration-count:infinite;
-    -ms-animation-timing-function:linear;
-    -o-animation-name:noTrespassingAnimationG;
-    -o-animation-duration:0.6s;
-    -o-animation-iteration-count:infinite;
-    -o-animation-timing-function:linear;
-    animation-name:noTrespassingAnimationG;
-    animation-duration:0.6s;
-    animation-iteration-count:infinite;
-    animation-timing-function:linear;
+.noTrespassingBarLineG {
+  background-color: #000000;
+  float: left;
+  width: 15px;
+  height: 131px;
+  margin-right: 26px;
+  margin-top: -31px;
+  -moz-transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
-
-#noTrespassingFrontBarG{
+.noTrespassingAnimationG {
+  width: 258px;
+  -moz-animation-name: noTrespassingAnimationG;
+  -moz-animation-duration: 0.6s;
+  -moz-animation-iteration-count: infinite;
+  -moz-animation-timing-function: linear;
+  -webkit-animation-name: noTrespassingAnimationG;
+  -webkit-animation-duration: 0.6s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  -ms-animation-name: noTrespassingAnimationG;
+  -ms-animation-duration: 0.6s;
+  -ms-animation-iteration-count: infinite;
+  -ms-animation-timing-function: linear;
+  -o-animation-name: noTrespassingAnimationG;
+  -o-animation-duration: 0.6s;
+  -o-animation-iteration-count: infinite;
+  -o-animation-timing-function: linear;
+  animation-name: noTrespassingAnimationG;
+  animation-duration: 0.6s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
 }
-
-@-moz-keyframes noTrespassingAnimationG{
-    0%{
-        margin-left:-42px;
-    }
-
-    100%{
-        margin-left:0px;
-    }
-
+@-moz-keyframes noTrespassingAnimationG {
+  0% {
+    margin-left: -42px;
+  }
+  100% {
+    margin-left: 0px;
+  }
 }
-
-@-webkit-keyframes noTrespassingAnimationG{
-    0%{
-        margin-left:-42px;
-    }
-
-    100%{
-        margin-left:0px;
-    }
-
+@-webkit-keyframes noTrespassingAnimationG {
+  0% {
+    margin-left: -42px;
+  }
+  100% {
+    margin-left: 0px;
+  }
 }
-
-@-ms-keyframes noTrespassingAnimationG{
-    0%{
-        margin-left:-42px;
-    }
-
-    100%{
-        margin-left:0px;
-    }
-
+@-ms-keyframes noTrespassingAnimationG {
+  0% {
+    margin-left: -42px;
+  }
+  100% {
+    margin-left: 0px;
+  }
 }
-
-@-o-keyframes noTrespassingAnimationG{
-    0%{
-        margin-left:-42px;
-    }
-
-    100%{
-        margin-left:0px;
-    }
-
+@-o-keyframes noTrespassingAnimationG {
+  0% {
+    margin-left: -42px;
+  }
+  100% {
+    margin-left: 0px;
+  }
 }
-
-@keyframes noTrespassingAnimationG{
-    0%{
-        margin-left:-42px;
-    }
-
-    100%{
-        margin-left:0px;
-    }
-
+@keyframes noTrespassingAnimationG {
+  0% {
+    margin-left: -42px;
+  }
+  100% {
+    margin-left: 0px;
+  }
 }

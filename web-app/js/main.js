@@ -1,5 +1,5 @@
 requirejs.config({
-	baseUrl: '/k/static/js',
+	baseUrl: '/k/js',
 	paths: {
 		'jquery': '../bower_components/jquery/jquery',
 		'angular': '../bower_components/angular/angular',
@@ -21,7 +21,7 @@ requirejs.config({
 		'outlayer': '../bower_components/outlayer',
 		'packery': '../bower_components/packery/js',
 		'jquery-bridget': '../bower_components/jquery-bridget/jquery.bridget',
-		'images-loaded': '../bower_components/imagesLoaded/imagesLoaded',
+		'images-loaded': '../bower_components/imagesloaded/imagesloaded',
         'file-upload': '../bower_components/ng-file-upload/angular-file-upload',
         'file-upload-html5-shim': '../bower_components/ng-file-upload/angular-file-upload-html5-shim',
         'file-upload-shim': '../bower_components/ng-file-upload/angular-file-upload-shim'
@@ -56,7 +56,7 @@ require([
 	'bootstrap',
 	'controller/main',
 	'controller/browse',
-	'controller/accountLinks',
+	'controller/account-links',
 	'controller/post'
 ], function( $, angular ) {
 

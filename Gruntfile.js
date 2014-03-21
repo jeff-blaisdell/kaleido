@@ -34,17 +34,9 @@ module.exports = function (grunt) {
 					livereload: true
 				}
 			},
-			jsTest: {
-				files: ['test/spec/{,*/}*.js'],
-				tasks: ['jshint:test', 'karma']
-			},
-			styles: {
-				files: ['<%= yeoman.app %>/css/{,*/}*.css'],
-				tasks: ['newer:copy:styles', 'autoprefixer']
-			},
-			gruntfile: {
-				files: ['Gruntfile.js']
-			},
+            lessCss: {
+                tasks: ['less']
+            },
 			livereload: {
 				options: {
 					livereload: '<%= connect.options.livereload %>'
@@ -124,7 +116,38 @@ module.exports = function (grunt) {
 				]
 			},
 			server: '.tmp'
-		}
+		},
+
+        less: {
+            development: {
+                options: {
+                    yuicompress: false
+                },
+                files: [
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: ['<%= yeoman.app %>/theme/*.less', '<%= yeoman.app %>/less/*.less'],
+                        dest: '<%= yeoman.app %>/css/',
+                        ext: '.css'
+                    }
+                ]
+            },
+            production: {
+                options: {
+                    yuicompress: true
+                },
+                files: [
+                    {
+                        expand: true,
+                        flatten: true,
+                        src: ['<%= yeoman.app %>/theme/*.less', '<%= yeoman.app %>/less/*.less'],
+                        dest: '<%= yeoman.app %>/css/',
+                        ext: '.css'
+                    }
+                ]
+            }
+        }
 	});
 
 	grunt.registerTask('serve', function () {

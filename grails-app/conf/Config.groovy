@@ -33,7 +33,8 @@ grails.mime.types = [
 //grails.urlmapping.cache.maxsize = 1000
 
 // What URL patterns should be processed by the resources plugin
-grails.resources.adhoc.patterns = ['/images/*', '/plugins/*']
+//grails.resources.adhoc.patterns = ['/images/*', '/plugins/*']
+grails.resources.adhoc.excludes = ['**']
 grails.resources.processing.enabled = false
 
 // The default codec used to encode data with ${}

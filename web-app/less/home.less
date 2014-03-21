@@ -1,0 +1,42 @@
+@import url('progress-bar.css');
+@import url('post.css');
+
+.browse-post {
+    margin: 10px 10px 10px 0px;
+}
+
+.browse-progress-bar {
+    position: absolute;
+    bottom: 0px;
+}
+
+.browse-nav {
+    display: none;
+}
+
+/* Also, don't forget to add this: */
+[data-columns]::before { display: none; }
+
+
+.browse-posts[data-columns]::before {
+    content: '1 .column.size-1of1';
+}
+
+/* These are the classes that are going to be applied: */
+.size-1of1 { width: 100%; }
+.size-1of2 { width: 48%; }
+.size-1of3 { width: 32.33333%; }
+.column { float: left; }
+
+
+@media screen and (min-width: 40em) {
+    .browse-posts[data-columns]::before {
+        content: '2 .column.size-1of2';
+    }
+}
+
+@media screen and (min-width: 60em) {
+    .browse-posts[data-columns]::before {
+        content: '3 .column.size-1of3';
+    }
+}
