@@ -6,8 +6,10 @@
     <link rel="stylesheet" href="${resource(dir: 'css', file: 'home.css')}" type="text/css">
 </head>
 <body>
-    <section ui-view>
+    <main>
+        <section ui-view>
 
-    </section>
+        </section>
+    </main>
 </body>
 </html>

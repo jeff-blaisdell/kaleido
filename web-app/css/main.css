@@ -10,9 +10,6 @@
 @import '../theme/assets/components/library/icons/pictoicons/css/picto.css';
 @import '../theme/assets/components/library/animate/animate.min.css';
 @import '../theme/assets/components/modules/admin/forms/elements/bootstrap-datepicker/assets/lib/css/bootstrap-datepicker.css';
-@import url("base.css");
-@import url("layout.css");
-@import url("nav.css");
 html {
   -webkit-font-smoothing: antialiased !important;
   height: 100%;
@@ -5040,4 +5037,18 @@ body {
   html.app .sidebar-mini .layout-app {
     left: 0px;
   }
+}
+main {
+  margin: 10px 0px;
+}
+.l-globalwidth {
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  width: 95%;
+}
+.nav-welcome {
+  float: right;
+  padding-right: 13px;
 }
